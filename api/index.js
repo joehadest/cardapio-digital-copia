@@ -4,14 +4,14 @@ const mongoose = require('mongoose');
 const authRoutes = require('./auth');
 const app = express();
 
-// Conectar ao MongoDB
+// Conectar ao MongoDB com log detalhado
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
-    console.log('Conectado ao MongoDB Atlas');
+    console.log('✅ Conectado ao MongoDB Atlas com sucesso!');
 }).catch(err => {
-    console.error('Erro ao conectar ao MongoDB:', err);
+    console.error('❌ Erro ao conectar ao MongoDB:', err);
 });
 
 // Middleware básico
