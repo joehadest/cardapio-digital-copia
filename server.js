@@ -5,11 +5,16 @@ const bcrypt = require('bcrypt');
 const User = require('./models/User');
 const app = express();
 
+// Configurar strictQuery antes da conexão
+mongoose.set('strictQuery', false);
+
 // Conexão com MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-});
+})
+    .then(() => console.log('MongoDB conectado com sucesso'))
+    .catch(err => console.error('Erro na conexão MongoDB:', err));
 
 // Adicionar CORS para produção
 app.use((req, res, next) => {
