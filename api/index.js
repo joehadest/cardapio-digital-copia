@@ -1,6 +1,18 @@
+require('dotenv').config();
 const express = require('express');
+const mongoose = require('mongoose');
 const authRoutes = require('./auth');
 const app = express();
+
+// Conectar ao MongoDB
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log('Conectado ao MongoDB Atlas');
+}).catch(err => {
+    console.error('Erro ao conectar ao MongoDB:', err);
+});
 
 // Middleware básico
 app.use(express.json());
