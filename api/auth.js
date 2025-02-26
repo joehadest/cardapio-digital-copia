@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
+const mongoose = require('mongoose'); // Adicionar esta linha
 
 // Rota de login
 router.post('/login', async (req, res) => {
@@ -32,54 +33,55 @@ router.post('/login', async (req, res) => {
 // Rota de registro com mais logs
 router.post('/register', async (req, res) => {
     try {
-        console.log('Iniciando registro de usuário:', req.body);
+        console.log('Iniciando registro:', req.body);
         const { name, email, password } = req.body;
 
         if (!name || !email || !password) {
-            console.log('Dados incompletos:', { name, email, password: '***' });
             return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
         }
 
-        // Verificar se usuário já existe
-        console.log('Verificando se email já existe:', email);
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            console.log('Email já cadastrado:', email);
-            return res.status(400).json({ error: 'Email já cadastrado' });
+        // Verificar conexão com banco
+        if (mongoose.connection.readyState !== 1) {
+            console.error('Banco de dados não conectado');
+            return res.status(500).json({ error: 'Erro de conexão com banco de dados' });
         }
 
-        // Hash da senha
-        console.log('Gerando hash da senha...');
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Criar novo usuário
-        console.log('Criando novo usuário...');
         const user = new User({
             name,
             email,
             password: hashedPassword
         });
 
-        console.log('Salvando usuário no banco...');
         await user.save();
-        console.log('Usuário registrado com sucesso:', { name, email });
 
-        res.json({
-            message: 'Usuário registrado com sucesso',
-            user: {
-                name,
-                email
-            }
+        res.status(201).json({
+            success: true,
+            message: 'Usuário registrado com sucesso'
         });
     } catch (error) {
-        console.error('Erro detalhado no registro:', error);
+        console.error('Erro completo:', error);
+
         if (error.code === 11000) {
             return res.status(400).json({ error: 'Email já cadastrado' });
         }
+
         res.status(500).json({
             error: 'Erro no servidor',
-            details: process.env.NODE_ENV === 'development' ? error.message : undefined
+            message: error.message
         });
+    }
+});
+
+// Adicionar nova rota para listar usuários
+router.get('/users', async (req, res) => {
+    try {
+        const users = await User.find({}, '-password'); // Exclui o campo password
+        res.json(users);
+    } catch (error) {
+        console.error('Erro ao listar usuários:', error);
+        res.status(500).json({ error: 'Erro ao listar usuários' });
     }
 });
 

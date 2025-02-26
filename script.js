@@ -372,7 +372,8 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     const password = form.querySelector('input[type="password"]').value;
 
     try {
-        console.log('Enviando dados de registro:', { name, email });
+        showToast('Registrando usuário...', 'info');
+
         const response = await fetch('/api/auth/register', {
             method: 'POST',
             headers: {
@@ -381,20 +382,23 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
             body: JSON.stringify({ name, email, password })
         });
 
-        const data = await response.json();
-        console.log('Resposta do servidor:', data);
+        let data;
+        try {
+            data = await response.json();
+        } catch (e) {
+            throw new Error('Erro na resposta do servidor');
+        }
 
         if (response.ok) {
             showToast('Registro realizado com sucesso!', 'success');
-            document.querySelector('[data-bs-target="#loginTab"]').click();
-            // Limpar formulário
             form.reset();
+            document.querySelector('[data-bs-target="#loginTab"]').click();
         } else {
-            showToast(data.error || 'Erro ao registrar', 'danger');
+            throw new Error(data.error || 'Erro ao registrar usuário');
         }
     } catch (error) {
-        console.error('Erro ao registrar:', error);
-        showToast('Erro ao conectar com o servidor', 'danger');
+        console.error('Erro detalhado:', error);
+        showToast(error.message || 'Erro ao conectar com o servidor', 'danger');
     }
 });
 
