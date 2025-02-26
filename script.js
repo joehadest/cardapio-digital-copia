@@ -340,7 +340,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const password = form.querySelector('input[type="password"]').value;
 
     try {
-        const response = await fetch('/login', {
+        const response = await fetch('/api/auth/login', {  // Modificar URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -372,7 +372,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     const password = form.querySelector('input[type="password"]').value;
 
     try {
-        const response = await fetch('/register', {
+        const response = await fetch('/api/auth/register', {  // Modificar URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
