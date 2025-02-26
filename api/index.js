@@ -4,14 +4,26 @@ const mongoose = require('mongoose');
 const authRoutes = require('./auth');
 const app = express();
 
-// Conectar ao MongoDB com log detalhado
+// Conectar ao MongoDB com mais logs
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
     console.log('✅ Conectado ao MongoDB Atlas com sucesso!');
+    console.log('📊 Database:', mongoose.connection.name);
+    console.log('🔌 Host:', mongoose.connection.host);
 }).catch(err => {
-    console.error('❌ Erro ao conectar ao MongoDB:', err);
+    console.error('❌ Erro ao conectar ao MongoDB:', err.message);
+    console.error('Stack:', err.stack);
+});
+
+// Adicionar listener para erros de conexão
+mongoose.connection.on('error', (err) => {
+    console.error('🔴 Erro na conexão MongoDB:', err);
+});
+
+mongoose.connection.on('disconnected', () => {
+    console.log('🔸 Desconectado do MongoDB');
 });
 
 // Middleware básico
