@@ -372,7 +372,8 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     const password = form.querySelector('input[type="password"]').value;
 
     try {
-        const response = await fetch('/api/auth/register', {  // Modificar URL
+        console.log('Enviando dados de registro:', { name, email });
+        const response = await fetch('/api/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -381,15 +382,19 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         });
 
         const data = await response.json();
+        console.log('Resposta do servidor:', data);
+
         if (response.ok) {
-            showToast('Registro realizado com sucesso!');
-            // Trocar para a aba de login
+            showToast('Registro realizado com sucesso!', 'success');
             document.querySelector('[data-bs-target="#loginTab"]').click();
+            // Limpar formulário
+            form.reset();
         } else {
-            showToast(data.error, 'danger');
+            showToast(data.error || 'Erro ao registrar', 'danger');
         }
     } catch (error) {
-        showToast('Erro ao registrar', 'danger');
+        console.error('Erro ao registrar:', error);
+        showToast('Erro ao conectar com o servidor', 'danger');
     }
 });
 
