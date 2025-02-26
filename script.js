@@ -361,6 +361,8 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         }
     } catch (error) {
         showToast('Erro ao fazer login', 'danger');
+    } finally {
+        closeModal(); // Garantir que o modal seja fechado após tentativa de login
     }
 });
 
@@ -443,4 +445,34 @@ function updateUserInterface() {
 // Adicionar listener para redimensionamento da janela
 window.addEventListener('resize', () => {
     updateUserInterface();
+});
+
+function closeModal() {
+    const modal = document.querySelector('.modal');
+    const overlay = document.querySelector('.overlay');
+
+    if (modal) modal.style.display = 'none';
+    if (overlay) {
+        overlay.style.display = 'none';
+        overlay.remove(); // Remover completamente o overlay
+    }
+
+    // Limpar eventos
+    document.removeEventListener('keydown', handleEscapeKey);
+}
+
+function handleEscapeKey(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+}
+
+// Adicionar clique fora do modal para fechar
+document.addEventListener('click', (e) => {
+    const modal = document.querySelector('.modal');
+    const overlay = document.querySelector('.overlay');
+
+    if (e.target === overlay) {
+        closeModal();
+    }
 });
