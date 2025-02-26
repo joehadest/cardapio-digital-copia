@@ -1,53 +1,65 @@
+require('dotenv').config();
 const express = require('express');
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const db = require('./database');
+const User = require('./models/User');
 const app = express();
+
+// Conexão com MongoDB
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
+// Adicionar CORS para produção
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
 
 app.use(express.json());
 app.use(express.static('.'));
 
-// Rota de registro
+// Modificar rotas para usar MongoDB
 app.post('/register', async (req, res) => {
-    const { email, password, name } = req.body;
     try {
+        const { name, email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
-        db.run('INSERT INTO users (email, password, name) VALUES (?, ?, ?)',
-            [email, hashedPassword, name],
-            (err) => {
-                if (err) {
-                    res.status(400).json({ error: 'Email já existe' });
-                } else {
-                    res.json({ message: 'Usuário registrado com sucesso' });
-                }
-            });
+        const user = new User({ name, email, password: hashedPassword });
+        await user.save();
+        res.json({ message: 'Usuário registrado com sucesso' });
+    } catch (error) {
+        res.status(400).json({ error: 'Email já existe' });
+    }
+});
+
+app.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(401).json({ error: 'Usuário não encontrado' });
+        }
+        const valid = await bcrypt.compare(password, user.password);
+        if (!valid) {
+            return res.status(401).json({ error: 'Senha incorreta' });
+        }
+        res.json({
+            id: user._id,
+            name: user.name,
+            email: user.email
+        });
     } catch (error) {
         res.status(500).json({ error: 'Erro no servidor' });
     }
 });
 
-// Rota de login
-app.post('/login', (req, res) => {
-    const { email, password } = req.body;
-    db.get('SELECT * FROM users WHERE email = ?', [email], async (err, user) => {
-        if (err) {
-            res.status(500).json({ error: 'Erro no servidor' });
-        } else if (!user) {
-            res.status(401).json({ error: 'Usuário não encontrado' });
-        } else {
-            const match = await bcrypt.compare(password, user.password);
-            if (match) {
-                res.json({
-                    id: user.id,
-                    email: user.email,
-                    name: user.name
-                });
-            } else {
-                res.status(401).json({ error: 'Senha incorreta' });
-            }
-        }
-    });
+// Modificar a porta para variável de ambiente
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
 });
 
-app.listen(3000, () => {
-    console.log('Servidor rodando na porta 3000');
-});
+// Exportar para Vercel
+module.exports = app;
