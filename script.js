@@ -52,22 +52,6 @@ const products = [
         category: 'pizzas'
     },
     // Bebidas
-    {
-        id: 7,
-        name: 'Gin Tônica Especial',
-        price: 24.90,
-        image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500',
-        description: 'Gin importado, tônica premium, zimbro e limão siciliano',
-        category: 'bebidas'
-    },
-    {
-        id: 8,
-        name: 'Suco Detox Verde',
-        price: 12.90,
-        image: 'https://images.unsplash.com/photo-1615478503562-ec2d8aa0e24e?w=500',
-        description: 'Couve, maçã verde, gengibre, hortelã e limão',
-        category: 'bebidas'
-    },
     // Novos refrigerantes
     {
         id: 14,
