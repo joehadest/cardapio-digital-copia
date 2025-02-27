@@ -115,7 +115,22 @@ const products = [
     }
 ];
 
-let cart = [];
+// Declarar cart como let e inicializar com dados do localStorage
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Função para salvar o carrinho no localStorage
+function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// Função para carregar o carrinho do localStorage
+function loadCart() {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+        updateCart();
+    }
+}
 
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
@@ -126,6 +141,7 @@ function addToCart(productId) {
     } else {
         cart.push({ ...product, quantity: 1 });
     }
+    saveCart(); // Salvar antes de atualizar interface
     updateCart();
     showToast(`${product.name} adicionado ao carrinho!`);
 }
@@ -171,6 +187,7 @@ function updateQuantity(productId, change) {
         if (cart[itemIndex].quantity <= 0) {
             cart.splice(itemIndex, 1);
         }
+        saveCart(); // Salvar antes de atualizar interface
         updateCart();
     }
 }
@@ -179,6 +196,7 @@ function removeFromCart(productId) {
     const itemIndex = cart.findIndex(item => item.id === productId);
     if (itemIndex > -1) {
         cart.splice(itemIndex, 1);
+        saveCart(); // Salvar antes de atualizar interface
         updateCart();
         showToast('Item removido do carrinho');
     }
@@ -252,6 +270,16 @@ ${referencia ? `Referência: ${referencia}` : ''}`;
 
     cart = [];
     updateCart();
+    localStorage.removeItem('cart'); // Limpar carrinho do localStorage
+
+    // Limpar campos do formulário
+    document.getElementById('rua').value = '';
+    document.getElementById('numero').value = '';
+    document.getElementById('bairro').value = '';
+    document.getElementById('complemento').value = '';
+    document.getElementById('referencia').value = '';
+    document.getElementById('trocoInput').value = '';
+
     showToast('Pedido enviado com sucesso!');
 }
 
@@ -296,6 +324,9 @@ function renderProducts(category = 'todos') {
 
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
+    // Atualizar interface do carrinho imediatamente
+    updateCart();
+
     // Verificar se há usuário logado
     const savedUser = localStorage.getItem('currentUser');
     if (savedUser) {
