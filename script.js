@@ -66,8 +66,7 @@ const products = [
         price: 12.90,
         image: 'https://images.unsplash.com/photo-1615478503562-ec2d8aa0e24e?w=500',
         description: 'Couve, maçã verde, gengibre, hortelã e limão',
-        category: 'bebidas',
-        destaque: true
+        category: 'bebidas'
     },
     // Novos refrigerantes
     {
@@ -84,13 +83,14 @@ const products = [
         price: 9.90,
         image: 'https://images.unsplash.com/photo-1624552184280-9e9631bbeee9?w=500',
         description: 'Garrafa de Coca-Cola 1 litro',
-        category: 'bebidas'
+        category: 'bebidas',
+        destaque: true
     },
     {
         id: 16,
         name: 'Coca-Cola 2L',
         price: 12.90,
-        image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500',
+        image: 'https://bretas.vtexassets.com/arquivos/ids/203063/65730cc7dddb07d995cdb5af.jpg?v=638376355309230000',
         description: 'Garrafa de Coca-Cola 2 litros',
         category: 'bebidas'
     },
