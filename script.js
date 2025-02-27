@@ -69,6 +69,103 @@ const products = [
         category: 'bebidas',
         destaque: true
     },
+    // Novos refrigerantes
+    {
+        id: 14,
+        name: 'Coca-Cola 350ml',
+        price: 5.90,
+        image: 'https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=500',
+        description: 'Coca-Cola gelada em lata de 350ml',
+        category: 'bebidas'
+    },
+    {
+        id: 15,
+        name: 'Coca-Cola 1L',
+        price: 9.90,
+        image: 'https://images.unsplash.com/photo-1624552184280-9e9631bbeee9?w=500',
+        description: 'Garrafa de Coca-Cola 1 litro',
+        category: 'bebidas'
+    },
+    {
+        id: 16,
+        name: 'Coca-Cola 2L',
+        price: 12.90,
+        image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500',
+        description: 'Garrafa de Coca-Cola 2 litros',
+        category: 'bebidas'
+    },
+    {
+        id: 17,
+        name: 'Guaraná Antarctica 350ml',
+        price: 5.50,
+        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        description: 'Guaraná Antarctica gelado em lata de 350ml',
+        category: 'bebidas'
+    },
+    {
+        id: 18,
+        name: 'Guaraná Antarctica 1L',
+        price: 8.90,
+        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        description: 'Garrafa de Guaraná Antarctica 1 litro',
+        category: 'bebidas'
+    },
+    {
+        id: 19,
+        name: 'Guaraná Antarctica 2L',
+        price: 11.90,
+        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        description: 'Garrafa de Guaraná Antarctica 2 litros',
+        category: 'bebidas'
+    },
+    {
+        id: 20,
+        name: 'Sprite 350ml',
+        price: 5.50,
+        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        description: 'Sprite gelado em lata de 350ml',
+        category: 'bebidas'
+    },
+    {
+        id: 21,
+        name: 'Sprite 1L',
+        price: 8.90,
+        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        description: 'Garrafa de Sprite 1 litro',
+        category: 'bebidas'
+    },
+    {
+        id: 22,
+        name: 'Sprite 2L',
+        price: 11.90,
+        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        description: 'Garrafa de Sprite 2 litros',
+        category: 'bebidas'
+    },
+    {
+        id: 23,
+        name: 'Fanta Laranja 350ml',
+        price: 5.50,
+        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        description: 'Fanta Laranja gelada em lata de 350ml',
+        category: 'bebidas'
+    },
+    {
+        id: 24,
+        name: 'Fanta Laranja 1L',
+        price: 8.90,
+        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        description: 'Garrafa de Fanta Laranja 1 litro',
+        category: 'bebidas'
+    },
+    {
+        id: 25,
+        name: 'Fanta Laranja 2L',
+        price: 11.90,
+        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        description: 'Garrafa de Fanta Laranja 2 litros',
+        category: 'bebidas'
+    },
     // Sobremesas
     {
         id: 9,
