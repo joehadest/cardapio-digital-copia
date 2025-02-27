@@ -14,7 +14,7 @@ Sistema de cardápio digital com autenticação de usuários e integração com 
 
 1. Clone o repositório
 ```bash
-git clone [url-do-repositório]
+git clone https://github.com/joehadest/cardapio-digital-copia.git
 cd cardapio-digital
 ```
 
