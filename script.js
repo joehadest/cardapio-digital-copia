@@ -240,27 +240,47 @@ function checkout() {
     const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked').value;
 
+    // Informações do cliente
+    const clientInfo = currentUser
+        ? `*Cliente:* ${currentUser.name}\n*Email:* ${currentUser.email}\n\n`
+        : '*Cliente:* Não identificado\n\n';
+
+    // Mensagem de troco melhorada
     let trocoMessage = '';
     if (selectedPayment === 'Dinheiro') {
         const trocoValue = document.getElementById('trocoInput').value;
-        if (trocoValue && parseFloat(trocoValue) > total) {
-            const trocoAmount = parseFloat(trocoValue) - total;
-            trocoMessage = `\n*Troco para: R$ ${parseFloat(trocoValue).toFixed(2)}*\n*Troco: R$ ${trocoAmount.toFixed(2)}*`;
+        if (trocoValue) {
+            const valorInformado = parseFloat(trocoValue);
+            if (valorInformado > total) {
+                const trocoAmount = valorInformado - total;
+                trocoMessage = `\n*Pagamento em Dinheiro:*\n` +
+                    `Valor informado: R$ ${valorInformado.toFixed(2)}\n` +
+                    `Troco necessário: R$ ${trocoAmount.toFixed(2)}`;
+            } else {
+                trocoMessage = `\n*Pagamento em Dinheiro:*\n` +
+                    `Valor informado: R$ ${valorInformado.toFixed(2)}\n` +
+                    `⚠️ Valor insuficiente - Total do pedido: R$ ${total.toFixed(2)}`;
+            }
+        } else {
+            trocoMessage = '\n*Pagamento em Dinheiro:*\nCliente não informou valor para troco';
         }
     }
 
-    const endereco = `*Endereço de Entrega:*
-Rua: ${rua}, ${numero}
-${complemento ? `Complemento: ${complemento}\n` : ''}Bairro: ${bairro}
-${referencia ? `Referência: ${referencia}` : ''}`;
+    const endereco = `*Endereço de Entrega:*\n` +
+        `Rua: ${rua}, ${numero}\n` +
+        `${complemento ? `Complemento: ${complemento}\n` : ''}` +
+        `Bairro: ${bairro}\n` +
+        `${referencia ? `Referência: ${referencia}\n` : ''}`;
 
     const pedido = cart.map(item =>
         `${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}`
     ).join('\n');
 
     const mensagem = encodeURIComponent(
-        `*Novo Pedido*\n\n${pedido}\n\n` +
-        `*Total: R$ ${total.toFixed(2)}*\n` +
+        `🛍️ *Novo Pedido*\n\n` +
+        `${clientInfo}` +
+        `*Itens do Pedido:*\n${pedido}\n\n` +
+        `*Total do Pedido: R$ ${total.toFixed(2)}*\n` +
         `*Forma de Pagamento: ${selectedPayment}*${trocoMessage}\n\n` +
         `${endereco}`
     );
