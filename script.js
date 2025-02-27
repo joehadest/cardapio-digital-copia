@@ -362,7 +362,9 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     } catch (error) {
         showToast('Erro ao fazer login', 'danger');
     } finally {
-        closeModal(); // Garantir que o modal seja fechado após tentativa de login
+        closeModal();
+        // Recriar o modal para futuros usos
+        new bootstrap.Modal(document.getElementById('loginModal'));
     }
 });
 
@@ -448,17 +450,24 @@ window.addEventListener('resize', () => {
 });
 
 function closeModal() {
-    const modal = document.querySelector('.modal');
-    const overlay = document.querySelector('.overlay');
+    const modalElement = document.getElementById('loginModal');
+    if (modalElement) {
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+        if (modalInstance) {
+            modalInstance.dispose(); // Destruir a instância do modal
+        }
 
-    if (modal) modal.style.display = 'none';
-    if (overlay) {
-        overlay.style.display = 'none';
-        overlay.remove(); // Remover completamente o overlay
+        // Limpar manualmente os elementos do modal
+        document.body.classList.remove('modal-open');
+        const backdrops = document.getElementsByClassName('modal-backdrop');
+        while (backdrops[0]) {
+            backdrops[0].parentNode.removeChild(backdrops[0]);
+        }
+
+        // Restaurar scroll
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
     }
-
-    // Limpar eventos
-    document.removeEventListener('keydown', handleEscapeKey);
 }
 
 function handleEscapeKey(e) {
