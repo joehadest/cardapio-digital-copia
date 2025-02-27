@@ -122,23 +122,15 @@ const products = [
         id: 20,
         name: 'Sprite 350ml',
         price: 5.50,
-        image: 'https://images.unsplash.com/photo-1625772452845-a96c73ba8f49?w=500',
+        image: 'https://andinacocacola.vtexassets.com/arquivos/ids/158586/Sprite-Original.jpg?v=638690962089970000',
         description: 'Sprite gelado em lata de 350ml',
-        category: 'bebidas'
-    },
-    {
-        id: 21,
-        name: 'Sprite 1L',
-        price: 8.90,
-        image: 'https://images.unsplash.com/photo-1625772452837-5b9f91c533ca?w=500',
-        description: 'Garrafa de Sprite 1 litro',
         category: 'bebidas'
     },
     {
         id: 22,
         name: 'Sprite 2L',
         price: 11.90,
-        image: 'https://images.unsplash.com/photo-1625772452829-cf51dc571c98?w=500',
+        image: 'https://ibassets.com.br/ib.item.image.large/l-645a1b82ff5b4727839cba8ddc4d098d.jpg',
         description: 'Garrafa de Sprite 2 litros',
         category: 'bebidas'
     },
@@ -146,23 +138,15 @@ const products = [
         id: 23,
         name: 'Fanta Laranja 350ml',
         price: 5.50,
-        image: 'https://images.unsplash.com/photo-1625772452853-c00c8dcd8bc4?w=500',
+        image: 'https://m.media-amazon.com/images/I/719qrCw-myL.jpg',
         description: 'Fanta Laranja gelada em lata de 350ml',
-        category: 'bebidas'
-    },
-    {
-        id: 24,
-        name: 'Fanta Laranja 1L',
-        price: 8.90,
-        image: 'https://images.unsplash.com/photo-1625772452861-7d8e4989ff75?w=500',
-        description: 'Garrafa de Fanta Laranja 1 litro',
         category: 'bebidas'
     },
     {
         id: 25,
         name: 'Fanta Laranja 2L',
         price: 11.90,
-        image: 'https://images.unsplash.com/photo-1625772452869-bc5f44ea1946?w=500',
+        image: 'https://prezunic.vtexassets.com/arquivos/ids/187447-800-auto?v=638368827882930000&width=800&height=auto&aspect=true',
         description: 'Garrafa de Fanta Laranja 2 litros',
         category: 'bebidas'
     },
