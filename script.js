@@ -28,27 +28,99 @@ const products = [
     // Pizzas
     {
         id: 4,
-        name: 'Margherita Especial',
+        name: 'Margherita Especial P',
+        price: 35.90,
+        image: 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=500',
+        description: 'Pizza P (4 fatias) - Molho de tomate italiano, mussarela de búfala, manjericão fresco',
+        category: 'pizzas'
+    },
+    {
+        id: 26,
+        name: 'Margherita Especial M',
         price: 45.90,
         image: 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=500',
-        description: 'Molho de tomate italiano, mussarela de búfala, manjericão fresco',
+        description: 'Pizza M (6 fatias) - Molho de tomate italiano, mussarela de búfala, manjericão fresco',
+        category: 'pizzas'
+    },
+    {
+        id: 27,
+        name: 'Margherita Especial G',
+        price: 55.90,
+        image: 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=500',
+        description: 'Pizza G (8 fatias) - Molho de tomate italiano, mussarela de búfala, manjericão fresco',
         category: 'pizzas',
         destaque: true
     },
     {
+        id: 28,
+        name: 'Margherita Especial GG',
+        price: 65.90,
+        image: 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=500',
+        description: 'Pizza GG (10 fatias) - Molho de tomate italiano, mussarela de búfala, manjericão fresco',
+        category: 'pizzas'
+    },
+    {
         id: 5,
-        name: 'Pepperoni Premium',
+        name: 'Pepperoni Premium P',
+        price: 39.90,
+        image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500',
+        description: 'Pizza P (4 fatias) - Pepperoni importado, mussarela, orégano e azeitonas pretas',
+        category: 'pizzas'
+    },
+    {
+        id: 29,
+        name: 'Pepperoni Premium M',
         price: 49.90,
         image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500',
-        description: 'Pepperoni importado, mussarela, orégano e azeitonas pretas',
+        description: 'Pizza M (6 fatias) - Pepperoni importado, mussarela, orégano e azeitonas pretas',
+        category: 'pizzas'
+    },
+    {
+        id: 30,
+        name: 'Pepperoni Premium G',
+        price: 59.90,
+        image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500',
+        description: 'Pizza G (8 fatias) - Pepperoni importado, mussarela, orégano e azeitonas pretas',
+        category: 'pizzas'
+    },
+    {
+        id: 31,
+        name: 'Pepperoni Premium GG',
+        price: 69.90,
+        image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500',
+        description: 'Pizza GG (10 fatias) - Pepperoni importado, mussarela, orégano e azeitonas pretas',
         category: 'pizzas'
     },
     {
         id: 6,
-        name: '4 Queijos',
+        name: '4 Queijos P',
+        price: 37.90,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500',
+        description: 'Pizza P (4 fatias) - Mussarela, gorgonzola, parmesão e requeijão cremoso',
+        category: 'pizzas'
+    },
+    {
+        id: 32,
+        name: '4 Queijos M',
         price: 47.90,
         image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500',
-        description: 'Mussarela, gorgonzola, parmesão e requeijão cremoso',
+        description: 'Pizza M (6 fatias) - Mussarela, gorgonzola, parmesão e requeijão cremoso',
+        category: 'pizzas'
+    },
+    {
+        id: 33,
+        name: '4 Queijos G',
+        price: 57.90,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500',
+        description: 'Pizza G (8 fatias) - Mussarela, gorgonzola, parmesão e requeijão cremoso',
+        category: 'pizzas'
+    },
+    {
+        id: 34,
+        name: '4 Queijos GG',
+        price: 67.90,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500',
+        description: 'Pizza GG (10 fatias) - Mussarela, gorgonzola, parmesão e requeijão cremoso',
         category: 'pizzas'
     },
     // Bebidas
@@ -157,7 +229,7 @@ const products = [
         id: 11,
         name: 'Hot Dog Clássico',
         price: 12.90,
-        image: 'https://images.unsplash.com/photo-1677674048180-9e9ac1a50e35?w=500',
+        image: 'https://www.receiteria.com.br/wp-content/uploads/hot-dog-classico-capa.jpeg',
         description: 'Salsicha, tomate, batata palha, milho, ervilha e molhos especiais',
         category: 'hotdogs',
         destaque: true
@@ -166,7 +238,7 @@ const products = [
         id: 12,
         name: 'Hot Dog Bacon',
         price: 15.90,
-        image: 'https://images.unsplash.com/photo-1612392062422-ef19c7e3d8cf?w=500',
+        image: 'https://recipes-secure-graphics.grocerywebsite.com/0_GraphicsRecipes/8173_4k.jpg',
         description: 'Salsicha, bacon crocante, cheddar, batata palha e molhos',
         category: 'hotdogs'
     },
@@ -174,7 +246,7 @@ const products = [
         id: 13,
         name: 'Hot Dog Catupiry',
         price: 14.90,
-        image: 'https://images.unsplash.com/photo-1683297002760-c8655924a015?w=500',
+        image: 'https://s3-sa-east-1.amazonaws.com/deliveryon-uploads/products/burguerdahora/16_64b045fe6b9b0.jpeg',
         description: 'Salsicha, catupiry original, batata palha e molhos especiais',
         category: 'hotdogs'
     }
