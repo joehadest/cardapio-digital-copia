@@ -98,7 +98,7 @@ const products = [
         id: 17,
         name: 'Guaraná Antarctica 350ml',
         price: 5.50,
-        image: 'https://images.unsplash.com/photo-1624952187436-5f16281a71da?w=500',
+        image: 'https://choppbrahmaexpress.vtexassets.com/arquivos/ids/155719/guaran_zero_350.png?v=637353454727100000',
         description: 'Guaraná Antarctica gelado em lata de 350ml',
         category: 'bebidas'
     },
@@ -106,7 +106,7 @@ const products = [
         id: 18,
         name: 'Guaraná Antarctica 1L',
         price: 8.90,
-        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        image: 'https://www.imigrantesbebidas.com.br/bebida/images/products/full/4614-refrigerante-guarana-antarctica-1l.jpg',
         description: 'Garrafa de Guaraná Antarctica 1 litro',
         category: 'bebidas'
     },
@@ -114,7 +114,7 @@ const products = [
         id: 19,
         name: 'Guaraná Antarctica 2L',
         price: 11.90,
-        image: 'https://images.unsplash.com/photo-1625772452859-982598e15b6a?w=500',
+        image: 'https://prezunic.vtexassets.com/arquivos/ids/179006/656788f91ef3739680760eac.jpg?v=638368808927270000',
         description: 'Garrafa de Guaraná Antarctica 2 litros',
         category: 'bebidas'
     },
