@@ -328,6 +328,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Não precisa re-renderizar, as tabs já contêm os produtos
         });
     });
+
+    const modalElement = document.getElementById('loginModal');
+    if (modalElement) {
+        modalElement.addEventListener('hide.bs.modal', () => {
+            setTimeout(cleanupModal, 300); // Pequeno delay para garantir que o modal fechou
+        });
+    }
 });
 
 // Funções de autenticação
@@ -450,23 +457,39 @@ window.addEventListener('resize', () => {
 });
 
 function closeModal() {
+    // Fechar modal usando Bootstrap
     const modalElement = document.getElementById('loginModal');
     if (modalElement) {
+        // Remover event listeners antigos
+        modalElement.removeEventListener('hidden.bs.modal', cleanupModal);
+
+        // Adicionar novo listener para limpeza
+        modalElement.addEventListener('hidden.bs.modal', cleanupModal);
+
+        // Fechar usando API do Bootstrap
         const modalInstance = bootstrap.Modal.getInstance(modalElement);
         if (modalInstance) {
-            modalInstance.dispose(); // Destruir a instância do modal
+            modalInstance.hide();
         }
+    }
+}
 
-        // Limpar manualmente os elementos do modal
-        document.body.classList.remove('modal-open');
-        const backdrops = document.getElementsByClassName('modal-backdrop');
-        while (backdrops[0]) {
-            backdrops[0].parentNode.removeChild(backdrops[0]);
-        }
+function cleanupModal() {
+    // Limpar elementos do modal
+    document.body.classList.remove('modal-open');
 
-        // Restaurar scroll
-        document.body.style.overflow = '';
-        document.body.style.paddingRight = '';
+    // Remover todos os backdrops
+    const backdrops = document.getElementsByClassName('modal-backdrop');
+    Array.from(backdrops).forEach(backdrop => backdrop.remove());
+
+    // Restaurar scroll e padding
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+
+    // Recriar modal
+    const modalElement = document.getElementById('loginModal');
+    if (modalElement) {
+        new bootstrap.Modal(modalElement);
     }
 }
 
