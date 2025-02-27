@@ -98,7 +98,7 @@ const products = [
         id: 17,
         name: 'Guaraná Antarctica 350ml',
         price: 5.50,
-        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        image: 'https://images.unsplash.com/photo-1624952187436-5f16281a71da?w=500',
         description: 'Guaraná Antarctica gelado em lata de 350ml',
         category: 'bebidas'
     },
@@ -114,7 +114,7 @@ const products = [
         id: 19,
         name: 'Guaraná Antarctica 2L',
         price: 11.90,
-        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        image: 'https://images.unsplash.com/photo-1625772452859-982598e15b6a?w=500',
         description: 'Garrafa de Guaraná Antarctica 2 litros',
         category: 'bebidas'
     },
@@ -122,7 +122,7 @@ const products = [
         id: 20,
         name: 'Sprite 350ml',
         price: 5.50,
-        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        image: 'https://images.unsplash.com/photo-1625772452845-a96c73ba8f49?w=500',
         description: 'Sprite gelado em lata de 350ml',
         category: 'bebidas'
     },
@@ -130,7 +130,7 @@ const products = [
         id: 21,
         name: 'Sprite 1L',
         price: 8.90,
-        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        image: 'https://images.unsplash.com/photo-1625772452837-5b9f91c533ca?w=500',
         description: 'Garrafa de Sprite 1 litro',
         category: 'bebidas'
     },
@@ -138,7 +138,7 @@ const products = [
         id: 22,
         name: 'Sprite 2L',
         price: 11.90,
-        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        image: 'https://images.unsplash.com/photo-1625772452829-cf51dc571c98?w=500',
         description: 'Garrafa de Sprite 2 litros',
         category: 'bebidas'
     },
@@ -146,7 +146,7 @@ const products = [
         id: 23,
         name: 'Fanta Laranja 350ml',
         price: 5.50,
-        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        image: 'https://images.unsplash.com/photo-1625772452853-c00c8dcd8bc4?w=500',
         description: 'Fanta Laranja gelada em lata de 350ml',
         category: 'bebidas'
     },
@@ -154,7 +154,7 @@ const products = [
         id: 24,
         name: 'Fanta Laranja 1L',
         price: 8.90,
-        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        image: 'https://images.unsplash.com/photo-1625772452861-7d8e4989ff75?w=500',
         description: 'Garrafa de Fanta Laranja 1 litro',
         category: 'bebidas'
     },
@@ -162,7 +162,7 @@ const products = [
         id: 25,
         name: 'Fanta Laranja 2L',
         price: 11.90,
-        image: 'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500',
+        image: 'https://images.unsplash.com/photo-1625772452869-bc5f44ea1946?w=500',
         description: 'Garrafa de Fanta Laranja 2 litros',
         category: 'bebidas'
     },
